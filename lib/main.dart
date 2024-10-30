@@ -1,6 +1,20 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:monologue/data_sources.dart';
+import 'package:monologue/views/splash/page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final cameras = await availableCameras();
+  // Filter for the front camera
+  firstCamera = cameras.firstWhere(
+    (camera) => camera.lensDirection == CameraLensDirection.front,
+  );
+
+  prefs = await SharedPreferences.getInstance();
+  accessToken = prefs.getString('accessToken');
+
   runApp(const MyApp());
 }
 
@@ -9,6 +23,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: const AppBarTheme(color: Colors.white),
+        fontFamily: 'Pretendard',
+      ),
+      home: const SplashPage(),
+    );
   }
 }
