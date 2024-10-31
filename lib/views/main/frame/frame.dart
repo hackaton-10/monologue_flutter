@@ -3,10 +3,10 @@ part of 'page.dart';
 class _Frame extends StatelessWidget {
   const _Frame({
     super.key,
-    required this.heart,
+    required this.frame,
   });
 
-  final bool heart;
+  final List<FrameModel> frame;
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +14,12 @@ class _Frame extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 40.0),
         child: GridView.builder(
-          itemCount: 5,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          itemCount: frame.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisSpacing: 24,
             mainAxisSpacing: 12,
             crossAxisCount: 2,
-            childAspectRatio: 0.7,
+            childAspectRatio: childAspectRatio,
           ),
           itemBuilder: (context, index) => MonologueFrame(
             onTap: () {},

@@ -4,14 +4,12 @@ class _Scaffold extends StatelessWidget {
   const _Scaffold({
     super.key,
     required this.profile,
-    required this.firstButton,
     required this.secondButton,
     required this.thirdButton,
     required this.fourthButton,
   });
 
   final Widget profile;
-  final Widget firstButton;
   final Widget secondButton;
   final Widget thirdButton;
   final Widget fourthButton;
@@ -35,10 +33,6 @@ class _Scaffold extends StatelessWidget {
                 profile,
                 const SizedBox(
                   height: 40,
-                ),
-                firstButton,
-                const SizedBox(
-                  height: 16,
                 ),
                 secondButton,
                 const SizedBox(

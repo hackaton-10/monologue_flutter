@@ -16,6 +16,8 @@ class _LogoState extends State<_Logo> with TickerProviderStateMixin {
 
   fetchApis() async {
     user = await UserApi().userProfile();
+    localFrame = await FrameApi().all();
+    myFrame = await FrameApi().myFrame();
     usernameSignupTextEditingController.text = user!.name;
   }
 

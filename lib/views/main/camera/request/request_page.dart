@@ -1,9 +1,26 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:monologue/data_sources.dart';
 import 'package:monologue/utils/colors.dart';
 import 'package:monologue/views/main/page.dart';
 
 class RequestPage extends StatelessWidget {
   const RequestPage({super.key});
+
+  Future<void> saveImageToGallery(BuildContext context, String imagePath) async {
+    final result = await ImageGallerySaver.saveFile(imagePath);
+    if (result['isSuccess']) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('이미지가 갤러리에 저장되었습니다')),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('이미지 저장에 실패했습니다')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,69 +29,70 @@ class RequestPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/images/frame.png',
-              height: 450,
-              width: 318,
-            ),
-            const SizedBox(
-              height: 40,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 52,
-                    width: 160,
-                    decoration: const BoxDecoration(
-                      color: MonologueColor.black,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 12,
+                top: 60,
+                right: 12,
+                bottom: 20,
+              ),
+              child: Stack(
+                children: [
+                  Image.asset(
+                    'assets/images/frame.png',
+                  ),
+                  Positioned.fill(
+                    child: GridView.builder(
+                      padding: const EdgeInsets.all(10),
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 10,
+                        childAspectRatio: 0.81,
                       ),
-                    ),
-                    child: const Text(
-                      '스토리 저장',
-                      style: TextStyle(
-                        color: MonologueColor.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      itemCount: selectedImage.length,
+                      itemBuilder: (context, index) {
+                        return Image.file(
+                          File(selectedImage[index]),
+                          height: 210,
+                          width: 170,
+                          fit: BoxFit.cover,
+                        );
+                      },
                     ),
                   ),
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 52,
-                    width: 160,
-                    decoration: const BoxDecoration(
-                      color: MonologueColor.black,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8),
-                      ),
-                    ),
-                    child: const Text(
-                      '이미지 저장',
-                      style: TextStyle(
-                        color: MonologueColor.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 40),
+            GestureDetector(
+              onTap: () {
+                if (selectedImage.isNotEmpty) {
+                  saveImageToGallery(context, selectedImage[0]); // Saving first image as an example
+                }
+              },
+              child: Container(
+                alignment: Alignment.center,
+                height: 52,
+                width: 160,
+                decoration: const BoxDecoration(
+                  color: MonologueColor.black,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(8),
                   ),
                 ),
-              ],
+                child: const Text(
+                  '이미지 저장',
+                  style: TextStyle(
+                    color: MonologueColor.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             ),
-            const SizedBox(
-              height: 30,
-            ),
+            const SizedBox(height: 30),
             GestureDetector(
               onTap: () {
                 Navigator.pushAndRemoveUntil(
@@ -89,9 +107,7 @@ class RequestPage extends StatelessWidget {
                 height: 37,
                 decoration: BoxDecoration(
                   color: MonologueColor.white,
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(8),
-                  ),
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
                   border: Border.all(
                     color: Colors.black,
                     width: 1,

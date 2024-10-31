@@ -182,6 +182,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "image_gallery_saver",
+      "rootUri": "file:///Users/park-yuhyeon/.pub-cache/hosted/pub.dev/image_gallery_saver-2.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "image_picker",
       "rootUri": "file:///Users/park-yuhyeon/.pub-cache/hosted/pub.dev/image_picker-1.1.2",
       "packageUri": "lib/",
@@ -290,6 +296,24 @@
       "languageVersion": "3.3"
     },
     {
+      "name": "path_provider",
+      "rootUri": "file:///Users/park-yuhyeon/.pub-cache/hosted/pub.dev/path_provider-2.1.5",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "path_provider_android",
+      "rootUri": "file:///Users/park-yuhyeon/.pub-cache/hosted/pub.dev/path_provider_android-2.2.12",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
+      "name": "path_provider_foundation",
+      "rootUri": "file:///Users/park-yuhyeon/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
       "name": "path_provider_linux",
       "rootUri": "file:///Users/park-yuhyeon/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1",
       "packageUri": "lib/",
@@ -372,6 +396,12 @@
       "rootUri": "file:///opt/homebrew/Caskroom/flutter/3.22.2/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
       "languageVersion": "3.2"
+    },
+    {
+      "name": "social_share",
+      "rootUri": "file:///Users/park-yuhyeon/.pub-cache/hosted/pub.dev/social_share-2.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "source_span",
@@ -476,7 +506,7 @@
       "languageVersion": "3.5"
     }
   ],
-  "generated": "2024-10-30T13:03:41.963089Z",
+  "generated": "2024-10-30T20:40:22.282571Z",
   "generator": "pub",
   "generatorVersion": "3.5.3",
   "flutterRoot": "file:///opt/homebrew/Caskroom/flutter/3.22.2/flutter",

@@ -11,85 +11,90 @@ class PromptImagePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 12,
-              top: 60,
-              right: 12,
-              bottom: 20,
-            ),
-            child: Stack(
-              children: [
-                Image.asset(
-                  'assets/images/frame.png', // Make sure to add your image in the assets folder
-                ),
-                Positioned.fill(
-                  child: GridView.builder(
-                    padding: const EdgeInsets.all(10),
-                    physics: const NeverScrollableScrollPhysics(), // Disable scrolling
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, // Two columns
-                      mainAxisSpacing: 10,
-                      crossAxisSpacing: 10,
-                      childAspectRatio: 0.81,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 12,
+                top: 60,
+                right: 12,
+                bottom: 20,
+              ),
+              child: Stack(
+                children: [
+                  Image.asset(
+                    'assets/images/frame2.png', // Make sure to add your image in the assets folder
+                  ),
+                  Positioned.fill(
+                    child: GridView.builder(
+                      padding: const EdgeInsets.all(10),
+                      physics: const NeverScrollableScrollPhysics(), // Disable scrolling
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2, // Two columns
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 10,
+                        childAspectRatio: 0.81,
+                      ),
+                      itemCount: selectedImage.length,
+                      itemBuilder: (context, index) {
+                        return Image.file(
+                          File(selectedImage[index]),
+                          height: 210,
+                          width: 170,
+                          fit: BoxFit.cover,
+                        );
+                      },
                     ),
-                    itemCount: selectedImage.length,
-                    itemBuilder: (context, index) {
-                      return Image.file(
-                        File(selectedImage[index]),
-                        height: 210,
-                        width: 170,
-                        fit: BoxFit.cover,
-                      );
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 27),
+              child: TextField(
+                cursorColor: Colors.black,
+                controller: promptTextEditingController,
+                decoration: InputDecoration(
+                  hintText: '프롬프트를 영어로 입력하세요',
+                  border: monologueDecoration(),
+                  focusedBorder: monologueFocusDecoration(),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 70,
+            ),
+            const Divider(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  BackButton(
+                    onPressed: () {
+                      Navigator.pop(context);
                     },
                   ),
-                ),
-              ],
-            ),
-          ),
-          TextField(
-            cursorColor: Colors.black,
-            controller: promptTextEditingController,
-            decoration: InputDecoration(
-              hintText: '사용하실 닉네임을 입력해주세요',
-              border: monologueDecoration(),
-              focusedBorder: monologueFocusDecoration(),
-            ),
-          ),
-          const SizedBox(
-            height: 70,
-          ),
-          const Divider(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                BackButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-                IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (builder) => const LoadingPage(),
-                      ),
-                    );
-                  },
-                  icon: const Icon(
-                    Icons.check,
-                    size: 32,
-                  ),
-                )
-              ],
-            ),
-          )
-        ],
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (builder) => const LoadingPage(),
+                        ),
+                      );
+                    },
+                    icon: const Icon(
+                      Icons.check,
+                      size: 32,
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:monologue/api/frame_api.dart';
 import 'package:monologue/api/user_api.dart';
 import 'package:monologue/data_sources.dart';
 import 'package:monologue/views/auth/sign_in/page.dart';

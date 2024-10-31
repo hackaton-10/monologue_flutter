@@ -40,6 +40,8 @@ dependencies:
   dio: ^5.7.0
   shared_preferences: ^2.3.2
   camera: ^0.11.0+2
+  social_share: ^2.3.1
+  image_gallery_saver: ^2.0.3
 
 dev_dependencies:
   flutter_test:
@@ -65,6 +67,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/dumy/
     
   fonts:
     - family: Pretendard

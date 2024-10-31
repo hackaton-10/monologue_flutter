@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:monologue/data_sources.dart';
 import 'package:monologue/utils/colors.dart';
-import 'package:monologue/views/main/camera/prompt_image.dart/prompt_image_page.dart';
+import 'package:monologue/views/main/camera/prompot/prompt_image_page.dart';
 
 class AddImagePage extends StatefulWidget {
   const AddImagePage({super.key});
@@ -28,7 +28,7 @@ class _AddImagePageState extends State<AddImagePage> {
             child: Stack(
               children: [
                 Image.asset(
-                  'assets/images/frame.png', // Make sure to add your image in the assets folder
+                  'assets/images/frame2.png', // Make sure to add your image in the assets folder
                 ),
                 Positioned.fill(
                   child: GridView.builder(

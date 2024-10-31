@@ -5,20 +5,16 @@ class _SecondButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MonologueButtons(
-      text1: '내가 만든 프레임',
-      text2: '촬영한 사진',
-      onTap1: () {
+    return MonologueButton(
+      text: '내가 만든 프레임',
+      onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (builder) => const FramePage(
-              heart: false,
-            ),
+            builder: (builder) => const FramePage(),
           ),
         );
       },
-      onTap2: () {},
     );
   }
 }

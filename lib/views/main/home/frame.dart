@@ -9,17 +9,17 @@ class _Frame extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 40.0),
         child: GridView.builder(
-          itemCount: 5,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          itemCount: localFrame.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisSpacing: 24,
             mainAxisSpacing: 12,
             crossAxisCount: 2,
-            childAspectRatio: 0.7,
+            childAspectRatio: childAspectRatio,
           ),
           itemBuilder: (context, index) => MonologueFrame(
             onTap: () {},
-            frameName: frame[index].title,
-            image: frame[index].imageUrl,
+            frameName: localFrame[index].title,
+            image: localFrame[index].imageUrl,
           ),
         ),
       ),

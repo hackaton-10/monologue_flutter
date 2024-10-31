@@ -15,6 +15,8 @@ class _ButtonState extends State<_Button> {
   Future fetchApi() async {
     login = await AuthApi().signIn();
     user = await UserApi().userProfile();
+    localFrame = await FrameApi().all();
+    myFrame = await FrameApi().myFrame();
     usernameSignupTextEditingController.text = user!.name;
   }
 

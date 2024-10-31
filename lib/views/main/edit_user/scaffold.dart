@@ -14,6 +14,7 @@ class _Scaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: const MonologueTopbar(),
       body: Form(
         key: formKey,

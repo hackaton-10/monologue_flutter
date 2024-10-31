@@ -45,17 +45,17 @@ class ChoiceFramePage extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40.0),
               child: GridView.builder(
-                itemCount: 5 + 1,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                itemCount: localFrame.length + 1,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisSpacing: 24,
                   mainAxisSpacing: 12,
                   crossAxisCount: 2,
-                  childAspectRatio: 0.7,
+                  childAspectRatio: childAspectRatio,
                 ),
                 itemBuilder: (context, index) => index == 0
                     ? MonologueFrame(
-                        frameName: frame[index].title,
-                        image: frame[index].imageUrl,
+                        frameName: 'AI Frame',
+                        image: 'assets/images/ai.png',
                         onTap: () {
                           Navigator.push(
                             context,
@@ -74,8 +74,8 @@ class ChoiceFramePage extends StatelessWidget {
                             ),
                           );
                         },
-                        frameName: frame[index].title,
-                        image: frame[index].imageUrl,
+                        frameName: localFrame[index - 1].title,
+                        image: localFrame[index - 1].imageUrl,
                       ),
               ),
             ),
